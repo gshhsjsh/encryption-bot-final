@@ -2,7 +2,7 @@ import logging
 import base64
 import os
 import threading
-import re
+import time
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from flask import Flask
@@ -35,7 +35,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Start Flask in a separate thread
-    threading.Thread(target=run_flask, daemon=True).start()
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
     
     # Start Telegram Bot
     application = Application.builder().token(BOT_TOKEN).build()
