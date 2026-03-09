@@ -66,7 +66,7 @@ def home():
 
 @app.route("/health")
 def health():
-    return {"status": "ok"}
+    print("Health check requested"); return {"status": "ok"}
 
 # ====================== Configuration ======================
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "8541268288:AAEPRpX9FRzQkRb5odU3UJYfW1AgcxfltYg")
